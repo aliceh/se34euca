@@ -82,6 +82,7 @@ class EucaUITestLib_Base(unittest.TestCase):
             desired_capabilities['name'] = 'Testing IE 10 on Windows 8'
 
         else:
+            #desired_capabilities = webdriver.DesiredCapabilities.CHROME
             desired_capabilities = webdriver.DesiredCapabilities.FIREFOX
 
 
@@ -483,7 +484,7 @@ class EucaUITestLib_Base(unittest.TestCase):
         if self.check_if_element_present_by_type("ID", this_id) is not 0:
             raise UICheckException("Element by id not present: " + this_id)
         if self.check_if_element_visible_by_type("ID", this_id) is not True:
-            raise UICheckException("Element by id not visible:" + link_text)
+            raise UICheckException("Element by id not visible:" + this_id)
         print "Click: Element Type: ID, Element: " + this_id
         self.driver.find_element_by_id(this_id).click()
         time.sleep(1)
@@ -533,7 +534,7 @@ class EucaUITestLib_Base(unittest.TestCase):
         if self.check_if_element_present_by_type("ID", this_id) is not 0:
             raise UICheckException("Element by id not present:" + this_id)
         if self.check_if_element_visible_by_type("ID", this_id) is not True:
-            raise UICheckException("Element by id not visible:" + link_text)
+            raise UICheckException("Element by id not visible:" + this_id)
         print "Set: Element Type: ID, Element: " + this_id + ", Keys: " + keys
         self.driver.find_element_by_id(this_id).clear()
         self.driver.find_element_by_id(this_id).send_keys(keys)
@@ -581,7 +582,7 @@ class EucaUITestLib_Base(unittest.TestCase):
         if self.check_if_element_present_by_type("ID", this_id) is not 0:
             raise UICheckException("Element by id not present:" + this_id)
         if self.check_if_element_visible_by_type("ID", this_id) is not True:
-            raise UICheckException("Element by id not visible:" + link_text)
+            raise UICheckException("Element by id not visible:" + this_id)
         print "Get Text: Element Type: ID, Element: " + this_id
         return self.driver.find_element_by_id(this_id).text
 
@@ -606,7 +607,7 @@ class EucaUITestLib_Base(unittest.TestCase):
             raise UICheckException("Element by name not present: " + name)
         if self.check_if_element_visible_by_type("NAME", name) is not True:
             raise UICheckException("Element by name not visible:" + name)
-        print "Click: Element Type: NAME, Element: " + name
+        print "Get text: Element Type: NAME, Element: " + name
         return self.driver.find_element_by_name(name).text
 
     # SELECT TEXT CALLS
@@ -623,7 +624,7 @@ class EucaUITestLib_Base(unittest.TestCase):
         if self.check_if_element_present_by_type("ID", this_id) is not 0:
             raise UICheckException("Element by id not present: " + this_id)
         if self.check_if_element_visible_by_type("ID", this_id) is not True:
-            raise UICheckException("Element by id not visible:" + link_text)
+            raise UICheckException("Element by id not visible:" + this_id)
         print "Select: Element Type: ID, Element: " + this_id + ", Text: " + visible_text
         Select(self.driver.find_element_by_id(this_id)).select_by_visible_text(visible_text)
         return 0
