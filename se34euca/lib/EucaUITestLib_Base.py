@@ -82,9 +82,11 @@ class EucaUITestLib_Base(unittest.TestCase):
             desired_capabilities['name'] = 'Testing IE 10 on Windows 8'
 
         else:
-            desired_capabilities = webdriver.DesiredCapabilities.FIREFOX
+            desired_capabilities = webdriver.DesiredCapabilities.CHROME
+            #desired_capabilities = webdriver.Chrome()
 
 
+        #this_selenium_server_url ="http://" + self.selenium_server_ip + self.sauce_account + ":" + self.sauce_access_key + self.sauce_address + self.selenium_server_port
         this_selenium_server_url = "http://" + self.selenium_server_ip + self.sauce_account + ":" + self.sauce_access_key + self.sauce_address + self.selenium_server_port + "/wd/hub"
         #this_selenium_server_url = "http://eucaqa:2715f0a3-a8d6-420f-8a7b-1d91eea4ddd0@ondemand.saucelabs.com:80/wd/hub"
         print "SELENIUM SERVER URL: " + this_selenium_server_url
@@ -94,6 +96,8 @@ class EucaUITestLib_Base(unittest.TestCase):
             print "SET REMOTE WEBDRIVER AT: " + this_selenium_server_url
             self.driver = webdriver.Remote(this_selenium_server_url, desired_capabilities = desired_capabilities)
                                            #webdriver.DesiredCapabilities.FIREFOX)
+
+
 
         else:
             print "SET LOCAL WEBDRIVER"
